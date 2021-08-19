@@ -38,6 +38,8 @@
   file:
     path: "{{ item }}"
     state: directory
+    owner: "{{ certificates_path_owner }}"
+    group: "{{ certificates_path_group }}"
   with_items:
     - "{{ ssl_certs_path }}"
     - "{{ ssl_private_path }}"
@@ -46,9 +48,9 @@
   copy:
     content: "{{ hostvars[inventory_hostname][item]['privkey'] }}"
     dest: "{{ ssl_private_path + '/' + item + '.key' }}"
-    owner: root
-    group: root
-    mode: "0600"
+    owner: "{{ certificates_privkey_owner }}"
+    group: "{{ certificates_privkey_group }}"
+    mode: "0640"
   with_items: "{{ certificates }}"
   no_log: true
 
