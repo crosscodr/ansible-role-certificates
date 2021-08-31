@@ -50,7 +50,7 @@
     dest: "{{ ssl_private_path + '/' + item + '.key' }}"
     owner: "{{ certificates_privkey_owner }}"
     group: "{{ certificates_privkey_group }}"
-    mode: "0640"
+    mode: "{{ (certificates_privkey_group == 'root') | ternary('0600', '0640') }}"
   with_items: "{{ certificates }}"
   no_log: true
 
