@@ -9,4 +9,4 @@ certificates_path_group: root
 # certificates_cert_owner: root
 # certificates_cert_group: root
 certificates_privkey_owner: root
-certificates_privkey_group: root
+certificates_privkey_group: "{{'ssl-cert' if ansible_os_family == 'Debian' else 'root' }}"
