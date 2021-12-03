@@ -1,7 +1,6 @@
 ---
 certificates_dir: "{{ role_path }}/vars"
 
-
 # directory where certs are deployed to
 certificates_path_owner: root
 certificates_path_group: root
@@ -9,4 +8,4 @@ certificates_path_group: root
 # certificates_cert_owner: root
 # certificates_cert_group: root
 certificates_privkey_owner: root
-certificates_privkey_group: "{{'ssl-cert' if ansible_os_family == 'Debian' else 'root' }}"
+certificates_privkey_group: root
